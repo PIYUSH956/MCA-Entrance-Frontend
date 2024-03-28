@@ -4,8 +4,15 @@ import Container from "../Container";
 import { Button } from "../ui/button";
 import Logo from "./Logo";
 
+import useLoginModal from "@/hooks/useLoginModal";
+import useRegisterModal from "@/hooks/useRegisterModal";
+
 
 const Navbar = () => {
+
+  const loginModal = useLoginModal();
+  const registerModal = useRegisterModal();
+
   return (
     <div className="fixed w-full bg-white z-10 shadow-sm">
       <div
@@ -27,10 +34,10 @@ const Navbar = () => {
           >
             <Logo />
             <div className=" flex gap-x-3">
-              <Button variant="secondary">
+              <Button variant="secondary" onClick={loginModal.onOpen}>
                 Login
               </Button>
-              <Button variant="secondary">
+              <Button variant="secondary" onClick={registerModal.onOpen}>
                 Sign Up
               </Button>
             </div>
